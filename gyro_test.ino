@@ -1,5 +1,4 @@
-/* http://www.youtube.com/c/electronoobs
- * 
+/* 
  * This is an example where we configure te data of the MPU6050
  * and read the gyro data and print it to the serial monitor
  * 
