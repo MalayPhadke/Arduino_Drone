@@ -2,8 +2,6 @@
 #include <nRF24L01.h>
 #include <RF24.h>
 #include<printf.h>
-/*Create a unique pipe out. The receiver has to 
-  wear the same unique code*/
 
 const uint64_t pipeOut = 0xE8E8F0F0E1LL;
 
@@ -29,8 +27,6 @@ void resetData() {
   data.yaw = 127;
   data.pitch = 127;
   data.roll = 127;
-  // data.AUX1 = 0;
-  // data.AUX2 = 0;
 }
 
 void setup() {
