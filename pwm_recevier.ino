@@ -1,13 +1,5 @@
 /* Receiver code for the Arduino Radio control with PWM output
- *  
- *  THIS ONLY WORKS WITH ATMEGA328p registers!!!!
- *  It gives a nice PWM output on pins D2, D3, D4, D5, D6 and D7. Still working on it...
- *  
- *  Install the NRF24 library to your IDE
- *  Import the servo library as well
- * Upload this code to the Arduino UNO
- * Connect a NRF24 module to it:
- 
+
     Module // Arduino UNO
     
     GND    ->   GND
@@ -18,8 +10,6 @@
     MOSI   ->   D11
     MISO   ->   D12
 
-This code receive 6 channels and create a PWM output for each one on D2, D3, D4, D5, D6 and D7
-Please, like share and subscribe : https://www.youtube.com/c/ELECTRONOOBS
 */
 
 #include <SPI.h>
@@ -32,15 +22,11 @@ int pwm_width_2 = 0;
 int pwm_width_3 = 0;
 int pwm_width_4 = 0;
 int pwm_width_5 = 0;
-int pwm_width_6 = 0;
-int pwm_width_7 = 0;
 
 Servo PWM2;
 Servo PWM3;
 Servo PWM4;
 Servo PWM5;
-Servo PWM6;
-Servo PWM7;
 
                     //We could use up to 32 channels
 struct MyData {
@@ -80,8 +66,6 @@ void setup()
   PWM3.attach(3);
   PWM4.attach(4);
   PWM5.attach(5);
-  // PWM6.attach(6);
-  // PWM7.attach(7);
 
   //Configure the NRF24 module
   Serial.begin(9600);
@@ -123,8 +107,6 @@ pwm_width_2 = map(data.throttle, 0, 255, 1000, 2000);     //PWM value on digital
 pwm_width_3 = map(data.yaw,      0, 255, 1000, 2000);     //PWM value on digital pin D3
 pwm_width_4 = map(data.pitch,    0, 255, 1000, 2000);     //PWM value on digital pin D4
 pwm_width_5 = map(data.roll,     0, 255, 1000, 2000);     //PWM value on digital pin D5
-// pwm_width_6 = map(data.AUX1,     0, 255, 1000, 2000);     //PWM value on digital pin D6
-// pwm_width_7 = map(data.AUX2,     0, 255, 1000, 2000);     //PWM value on digital pin D7
 
   Serial.print("Throttle: ");
   Serial.println(pwm_width_2);
